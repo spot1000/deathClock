@@ -14,17 +14,24 @@ html, body {
 
 body {
   display:flex;
+  /*flex-direction: column;*/
   justify-content:center;
   align-items:center;
-
+  padding: 5%;
 }
 
 .clock {
+  flex-grow: 1;
   display: flex;
+  justify-content:center;
   align-items:center;
-  padding: 20px;
   text-align: center;
   border: solid 3px black;
+}
+
+.clockDisplay1, .clockDisplay2 {
+  border: solid 2px black;
+  flex-grow: 1;
 }
 
 .padded {
@@ -32,10 +39,16 @@ body {
 }
 
 .innerClock {
+  display: flex;
   border: solid 2px black;
   background: black;
   color: red;
+  font-size: 100px;
   padding: 20px;
-  font-size: 9em;
   font-family: 'DS-Digital';
+}
+
+p {
+  flex-grow: 1;
+
 }

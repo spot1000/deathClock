@@ -59,10 +59,10 @@ $('.start1').click(function() {
     myTimer(player1, playerOne, '.timerOne')
   }, 1000);
   $('.timerOne').html(playerOne.hours + ' : ' + displayTime(playerOne.minutes) + ' : ' + displayTime(playerOne.seconds));
-
-  $('.start1').hide();
-  $('.start2').show();
-  $('.start1').html('End Turn');
+  //
+  // $('.start1').hide();
+  // $('.start2').show();
+  // $('.start1').html('End Turn');
 
   $('.stop1').click(function() {
     clearInterval(player1)
@@ -74,8 +74,8 @@ $('.start2').click(function() {
     myTimer(player2, playerTwo, '.timerTwo')
   }, 1000);
   $('.timerTwo').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
-  $('.start2').hide();
-  $('.start1').show();
+  // $('.start2').hide();
+  // $('.start1').show();
 
   $('.stop2').click(function() {
     clearInterval(player2)
@@ -83,7 +83,6 @@ $('.start2').click(function() {
 });
 
 $(document).ready(function() {
-  $('.start2').hide();
   $('.timerOne').html(playerOne.hours + ' : ' + displayTime(playerOne.minutes) + ' : ' + displayTime(playerOne.seconds));
   $('.timerTwo').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
 })
