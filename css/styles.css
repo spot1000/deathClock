@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'DS-Digital';
+    src:url('../fonts/DS-Digital.ttf.woff') format('woff'),
+        url('../fonts/DS-Digital.ttf.svg#DS-Digital') format('svg'),
+        url('../fonts/DS-Digital.ttf.eot'),
+        url('../fonts/DS-Digital.ttf.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body {
   height:100%;
 }
@@ -10,5 +20,22 @@ body {
 }
 
 .clock {
+  display: flex;
+  align-items:center;
+  padding: 20px;
   text-align: center;
+  border: solid 3px black;
+}
+
+.padded {
+  padding: 20px;
+}
+
+.innerClock {
+  border: solid 2px black;
+  background: black;
+  color: red;
+  padding: 20px;
+  font-size: 9em;
+  font-family: 'DS-Digital';
 }
