@@ -1,13 +1,25 @@
+var playTime = 2
+
 var playerOne = {
-  'hours':2,
+  'name':'Player One',
+  'hours':playTime/2,
   'minutes':0,
   'seconds':0
 }
 
 var playerTwo = {
-  'hours':2,
+  'name':'Player Two',
+  'hours':playTime/2,
   'minutes':0,
   'seconds':0
+}
+
+function reset() {
+  playerOne.mintues = 0;
+  playerOne.seconds = 0;
+  playerTwo.mintues = 0;
+  playerTwo.seconds = 0;
+
 }
 
 function displayTime(num) {
@@ -29,7 +41,13 @@ function myTimer(playerClear, playerTimer, timer, stop) {
       playerTimer.minutes = 59;
     }
   }
-  $(timer).html(playerTimer.hours + ' : ' + displayTime(playerTimer.minutes) + ' : ' + displayTime(playerTimer.seconds));
+  if (playerTimer.hours == 0 && playerTimer.minutes == 0 && playerTimer.seconds == 0) {
+    $(timer).html('Time has run out for ' + playerTimer.name);
+    clearInterval(playerClear);
+  }
+  else {
+    $(timer).html(playerTimer.hours + ' : ' + displayTime(playerTimer.minutes) + ' : ' + displayTime(playerTimer.seconds));
+  }
 
   $(stop).click(function() {
     clearInterval(playerClear);
@@ -38,9 +56,9 @@ function myTimer(playerClear, playerTimer, timer, stop) {
 
 $('.start1').click(function() {
   var player1 = setInterval(function() {
-    myTimer(player1, playerOne, '.switchTimer')
+    myTimer(player1, playerOne, '.timerOne')
   }, 1000);
-  $('.switchTimer').html(playerOne.hours + ' : ' + displayTime(playerOne.minutes) + ' : ' + displayTime(playerOne.seconds));
+  $('.timerOne').html(playerOne.hours + ' : ' + displayTime(playerOne.minutes) + ' : ' + displayTime(playerOne.seconds));
 
   $('.start1').hide();
   $('.start2').show();
@@ -53,9 +71,9 @@ $('.start1').click(function() {
 
 $('.start2').click(function() {
   var player2 = setInterval(function() {
-    myTimer(player2, playerTwo, '.switchTimer')
+    myTimer(player2, playerTwo, '.timerTwo')
   }, 1000);
-  $('.switchTimer').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
+  $('.timerTwo').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
   $('.start2').hide();
   $('.start1').show();
 
@@ -63,3 +81,9 @@ $('.start2').click(function() {
     clearInterval(player2)
   });
 });
+
+$(document).ready(function() {
+  $('.start2').hide();
+  $('.timerOne').html(playerOne.hours + ' : ' + displayTime(playerOne.minutes) + ' : ' + displayTime(playerOne.seconds));
+  $('.timerTwo').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
+})
