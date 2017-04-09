@@ -13,9 +13,11 @@
   </div> -->
 
   <div class='clock'>
-    <div class='clockDisplay1 start2 stop1'>
-      <h3>Player One</h3>
-      <div class='innerClock'>
+    <div class='clockDisplay1'>
+      <form action="/action_page.php">
+        <input type="text" name="firstname" placeholder="Player One"><br>
+      </form>
+      <div class='innerClock start2 stop1'>
         <p class='timerOne'></p>
       </div>
     </div>
@@ -23,9 +25,11 @@
       <button class='start1 stop2'>Start Game</button>
       <button class='start2 stop1'>End Turn</button>
     </div> -->
-    <div class='clockDisplay2 start1 stop2'>
-      <h3>Player Two</h3>
-      <div class='innerClock'>
+    <div class='clockDisplay2'>
+      <form action="/action_page.php">
+        <input type="text" name="fullname" placeholder="Player Two"><br>
+      </form>
+      <div class='innerClock start1 stop2'>
         <p class='timerTwo'></p>
       </div>
     </div>
