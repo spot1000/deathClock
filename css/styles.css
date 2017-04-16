@@ -13,15 +13,10 @@
 }*/
 
 body {
-  display:flex;
-  /*flex-direction: column;*/
-  justify-content:center;
-  align-items:center;
   padding: 5%;
 }
 
 .clock {
-  flex-grow: 1;
   display: flex;
   justify-content:center;
   align-items:center;
@@ -36,10 +31,6 @@ body {
   flex-grow: 1;
 }
 
-/*.padded {
-  padding: 20px;
-}*/
-
 .innerClock {
   display: flex;
   border: solid 2px black;
@@ -52,5 +43,20 @@ body {
 
 p {
   flex-grow: 1;
+}
 
+@media (max-width: 360px) {
+  .clock {
+    flex-direction: column;
+  }
+  .innerClock {
+    margin: 5%;
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 640px) {
+  .innerClock {
+    font-size: 60px;
+  }
 }
