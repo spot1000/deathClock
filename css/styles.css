@@ -29,7 +29,7 @@ body {
   border: solid 2px black;
   margin: 2.5%;
   flex: 1;
-  min-height: 200px;
+  /*min-height: 200px;*/
 }
 
 .innerClock {
@@ -64,12 +64,16 @@ p {
     font-size: 50px;
   }
   .pause {
+    min-width: 100%;
   }
 }
 
 @media (min-width: 640px) {
   .innerClock {
     font-size: 60px;
+  }
+  .pause {
+    height: 20px !important;
   }
 }
 
