@@ -25,10 +25,11 @@ body {
   padding: 2.5% 0;
 }
 
-.clockDisplay1, .clockDisplay2 {
+.clockDisplay1, .clockDisplay2, button {
   border: solid 2px black;
   margin: 2.5%;
-  flex-grow: 1;
+  flex: 1;
+  min-height: 200px;
 }
 
 .innerClock {
@@ -41,9 +42,18 @@ body {
   font-family: 'DS-Digital';
 }
 
+.pause {
+  flex: 1;
+  max-width: 10%;
+  display: flex;
+  justify-content: center;
+}
+
 p {
   flex-grow: 1;
 }
+
+
 
 @media (max-width: 360px) {
   .clock {
@@ -53,10 +63,17 @@ p {
     margin: 5%;
     font-size: 50px;
   }
+  .pause {
+  }
 }
 
 @media (min-width: 640px) {
   .innerClock {
     font-size: 60px;
   }
+}
+
+
+.borderBox {
+  border: solid 2px black;
 }
