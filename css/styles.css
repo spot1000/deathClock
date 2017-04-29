@@ -54,7 +54,7 @@ p {
 
 
 
-@media (max-width: 360px) {
+@media only screen and (max-width: 760px) {
   .clock {
     flex-direction: column;
   }
@@ -63,15 +63,44 @@ p {
     font-size: 50px;
   }
   .pause {
-    max-width: 100%;
+    height: 20px;
+    max-width: 100% !important;
     margin: 10px;
   }
 }
 
-@media (max-width: 640px) {
+/*@media (max-width: 640px) {
   .innerClock {
     margin: 0;
     font-size: 50px;
+  }
+}*/
+
+@media only screen and (max-width: 1240px) {
+  .innerClock {
+    margin: 0;
+    font-size: 90px;
+  }
+}
+
+@media only screen and (max-width: 1115px) {
+  .innerClock {
+    margin: 0;
+    font-size: 80px;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  .innerClock {
+    margin: 0;
+    font-size: 70px;
+  }
+}
+
+@media only screen and (max-width: 875px) {
+  .innerClock {
+    margin: 0;
+    font-size: 60px;
   }
 }
 
