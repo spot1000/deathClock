@@ -66,7 +66,7 @@ function myTimer(playerClear, playerTimer, timer, stop) {
 }
 
 $('.start1').click(function() {
-  if (!playerOne.active) {
+  if (!playerOne.active && !playerTwo.paused) {
     var player1 = setInterval(function() {
       myTimer(player1, playerOne, '.timerOne')
     }, 1000);
@@ -85,7 +85,7 @@ $('.start1').click(function() {
 });
 
 $('.start2').click(function() {
-  if (!playerTwo.active) {
+  if (!playerTwo.active && !playerOne.paused) {
     var player2 = setInterval(function() {
       myTimer(player2, playerTwo, '.timerTwo')
     }, 1000);
