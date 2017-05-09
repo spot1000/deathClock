@@ -12,26 +12,37 @@
     <h2>Click your timer to stop your time, and start your opponents time</h2>
   </div> -->
 
-  <div class='clock borderBox'>
+  <div class='clock borderBox hidden'>
     <div class='clockDisplay1 borderBox'>
-      <input type="text" name="firstname" placeholder="Player One"><br>
+      <div class='name1'>
+        <p class='playerOneName'>Name goes Here</p>
+      </div>
       <div class='innerClock start2 stop1'>
         <p class='timerOne'></p>
       </div>
     </div>
       <button class='pause'>Pause Game</button>
     <div class='clockDisplay2 borderBox'>
-      <input type="text" name="fullname" placeholder="Player Two"><br>
+      <div class='name2'>
+        <p class='playerTwoName'>Name goes Here</p>
+      </div>
       <div class='innerClock start1 stop2'>
         <p class='timerTwo'></p>
       </div>
     </div>
   </div>
   <div class='timeselect'>
-      <button class='more'>More Time</button>
-      <button class='less'>Less Time</button>
+    <div class='item borderBox'>
+      <input id='pOne' type="text" name="firstname" placeholder="Player One">
+      <input id='pTwo' type="text" name="fullname" placeholder="Player Two" >
+
+    </div>
+    <div class='item borderBox'>
       <h3 class='time'>Display Time</h3>
+      <button class='more'>More Time</button>
       <button class='start'>Start Game</button>
+      <button class='less'>Less Time</button>
+    </div>
   </div>
 
 </body>

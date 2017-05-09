@@ -171,6 +171,9 @@ $('.start').click(() => {
   }
   $('.timerTwo').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
   $('.timeselect').hide();
+  $('.playerOneName').html($('#pOne').val());
+  $('.playerTwoName').html($('#pTwo').val());
+  $('.clock').removeClass('hidden');
 
   $(".start1").click()
 

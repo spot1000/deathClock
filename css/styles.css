@@ -27,10 +27,6 @@ body {
 .clockDisplay1, .clockDisplay2, button {
   margin: 2.5%;
   flex: 1;
-<<<<<<< HEAD
-  /*min-height: 200px;*/
-=======
->>>>>>> 15e25df381db74c44c052d7f868f80d2e78e482b
 }
 
 .innerClock {
@@ -67,9 +63,7 @@ p {
     font-size: 50px;
   }
   .pause {
-<<<<<<< HEAD
     min-width: 100%;
-=======
     height: 20px;
     max-width: 100% !important;
     margin: 10px;
@@ -101,7 +95,7 @@ p {
   .innerClock {
     margin: 0;
     font-size: 70px;
->>>>>>> 15e25df381db74c44c052d7f868f80d2e78e482b
+
   }
 }
 
@@ -118,4 +112,24 @@ p {
 
 .borderBox {
   border: solid 2px black;
+}
+
+.hidden {
+  display: none;
+}
+
+.timeSelect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  text-align: center;
+  flex: 1;
+}
+
+input {
+  text-align: center;
+  font-size: 25px;
 }
