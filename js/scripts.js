@@ -1,19 +1,20 @@
-var playTime = 2
+var playTime = 4200;
+var playerTime = playTime/2;
 
 var playerOne = {
   'name':'Player One',
-  'hours':playTime/2,
-  'minutes':0,
-  'seconds':0,
+  'hours':Math.floor(playerTime/(Math.pow(60,2))),
+  'minutes':Math.floor(playerTime/60)%60,
+  'seconds':playerTime%60,
   'active':false,
   'paused':false
 }
 
 var playerTwo = {
-  'name':'Player Two',
-  'hours':playTime/2,
-  'minutes':0,
-  'seconds':0,
+  'name':'Player One',
+  'hours':Math.floor(playerTime/(Math.pow(60,2))),
+  'minutes':Math.floor(playerTime/60)%60,
+  'seconds':playerTime%60,
   'active':false,
   'paused':false
 }
@@ -66,7 +67,7 @@ function myTimer(playerClear, playerTimer, timer, stop) {
 }
 
 $('.start1').click(function() {
-  if (!playerOne.active) {
+  if (!playerOne.active && !(playerTwo.paused || playerOne.paused)) {
     var player1 = setInterval(function() {
       myTimer(player1, playerOne, '.timerOne')
     }, 1000);
@@ -82,10 +83,13 @@ $('.start1').click(function() {
       playerOne.active = false;
     });
   }
+  else {
+    return
+  }
 });
 
 $('.start2').click(function() {
-  if (!playerTwo.active) {
+  if (!playerTwo.active && !(playerTwo.paused || playerOne.paused)) {
     var player2 = setInterval(function() {
       myTimer(player2, playerTwo, '.timerTwo')
     }, 1000);
@@ -98,6 +102,9 @@ $('.start2').click(function() {
       clearInterval(player2)
       playerTwo.active = false
     });
+  }
+  else {
+    return
   }
 });
 
@@ -126,8 +133,54 @@ $('.pause').click(function() {
   }
 });
 
+$('.more').mousedown(() => {
+  console.log('clicked');
+  playTime += 60;
+  playerTime = playTime/2;
+  console.log(playTime);
+  console.log(playerTime);
+  $('.time').html('Total Game Time: ' + Math.floor(playTime/(Math.pow(60,2))) + ' hours, ' + Math.floor(playTime/60)%60 + ' minutes');
+});
+
+$('.less').click(() => {
+  console.log('clicked');
+  playTime -= 60;
+  playerTime = playTime/2;
+  console.log(playTime);
+  console.log(playerTime);
+  $('.time').html('Total Game Time: ' + Math.floor(playTime/(Math.pow(60,2))) + ' hours, ' + Math.floor(playTime/60)%60 + ' minutes');
+});
+
+$('.start').click(() => {
+  playerOne = {
+    'name':'Player One',
+    'hours':Math.floor(playerTime/(Math.pow(60,2))),
+    'minutes':Math.floor(playerTime/60)%60,
+    'seconds':playerTime%60,
+    'active':false,
+    'paused':false
+  }
+
+  playerTwo = {
+    'name':'Player One',
+    'hours':Math.floor(playerTime/(Math.pow(60,2))),
+    'minutes':Math.floor(playerTime/60)%60,
+    'seconds':playerTime%60,
+    'active':false,
+    'paused':false
+  }
+  $('.timerTwo').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
+  $('.timeselect').hide();
+
+  $(".start1").click()
+
+})
+
+
+
 
 $(document).ready(function() {
-  $('.timerOne').html(playerOne.hours + ' : ' + displayTime(playerOne.minutes) + ' : ' + displayTime(playerOne.seconds));
-  $('.timerTwo').html(playerTwo.hours + ' : ' + displayTime(playerTwo.minutes) + ' : ' + displayTime(playerTwo.seconds));
+  $('.timerOne').html('0 : 00 : 00');
+  $('.timerTwo').html('0 : 00 : 00');
+  $('.time').html('Total Game Time: ' + Math.floor(playTime/(Math.pow(60,2))) + ' hours, ' + Math.floor(playTime/60)%60 + ' minutes')
 })
