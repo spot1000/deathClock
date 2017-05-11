@@ -7,7 +7,8 @@ var playerOne = {
   'minutes':Math.floor(playerTime/60)%60,
   'seconds':playerTime%60,
   'active':false,
-  'paused':false
+  'paused':false,
+  'interval': ''
 }
 
 var playerTwo = {
@@ -16,7 +17,8 @@ var playerTwo = {
   'minutes':Math.floor(playerTime/60)%60,
   'seconds':playerTime%60,
   'active':false,
-  'paused':false
+  'paused':false,
+  'interval': ''
 }
 
 function reset() {
@@ -36,7 +38,7 @@ function displayTime(num) {
   }
 }
 
-function myTimer(playerClear, playerTimer, timer, stop) {
+function myTimer(playerTimer, timer) {
 
   if (!playerTimer.paused) {
 
@@ -51,15 +53,11 @@ function myTimer(playerClear, playerTimer, timer, stop) {
       }
       if (playerTimer.hours == 0 && playerTimer.minutes == 0 && playerTimer.seconds == 0) {
         $(timer).html('Time Up ' + playerTimer.name);
-        clearInterval(playerClear);
+        clearInterval(playerTimer.interval);
       }
       else {
         $(timer).html(playerTimer.hours + ':' + displayTime(playerTimer.minutes) + ':' + displayTime(playerTimer.seconds));
       }
-
-      $(stop).click(function() {
-        clearInterval(playerClear);
-      });
   }
   else {
     return
@@ -68,8 +66,8 @@ function myTimer(playerClear, playerTimer, timer, stop) {
 
 $('.start1').click(function() {
   if (!playerOne.active && !(playerTwo.paused || playerOne.paused)) {
-    var player1 = setInterval(function() {
-      myTimer(player1, playerOne, '.timerOne')
+    playerOne.interval = setInterval(function() {
+      myTimer(playerOne, '.timerOne')
     }, 1000);
     $('.timerOne').html(playerOne.hours + ':' + displayTime(playerOne.minutes) + ':' + displayTime(playerOne.seconds));
     playerOne.active = true;
@@ -79,7 +77,7 @@ $('.start1').click(function() {
     // $('.start1').html('End Turn');
 
     $('.stop1').click(function() {
-      clearInterval(player1)
+      clearInterval(playerOne.interval)
       playerOne.active = false;
     });
   }
@@ -90,8 +88,8 @@ $('.start1').click(function() {
 
 $('.start2').click(function() {
   if (!playerTwo.active && !(playerTwo.paused || playerOne.paused)) {
-    var player2 = setInterval(function() {
-      myTimer(player2, playerTwo, '.timerTwo')
+    playerTwo.interval = setInterval(function() {
+      myTimer(playerTwo, '.timerTwo')
     }, 1000);
     $('.timerTwo').html(playerTwo.hours + ':' + displayTime(playerTwo.minutes) + ':' + displayTime(playerTwo.seconds));
     playerTwo.active = true;
@@ -99,7 +97,7 @@ $('.start2').click(function() {
     // $('.start1').show();
 
     $('.stop2').click(function() {
-      clearInterval(player2)
+      clearInterval(playerTwo.interval)
       playerTwo.active = false
     });
   }
@@ -114,7 +112,7 @@ function pause() {
   if (playerOne.active) {
     if (!playerOne.paused) {
       playerOne.paused = true;
-      $('.pause').text('Restart Game');
+      $('.pause').text('Resume Game');
     }
     else {
       playerOne.paused = false;
@@ -124,7 +122,7 @@ function pause() {
   else {
     if (!playerTwo.paused) {
       playerTwo.paused = true;
-      $('.pause').text('Restart Game');
+      $('.pause').text('Resume Game');
     }
     else {
       playerTwo.paused = false;
@@ -188,10 +186,20 @@ $('.start').click(() => {
   $('.playerOneName').html(playerOne.name);
   $('.playerTwoName').html(playerTwo.name);
   $('.clock').removeClass('hidden');
+  $('.pauseReset').removeClass('hidden');
 
   $(".start1").click()
 
 });
+
+$('.restart').click(() => {
+  playTime = 4200
+  $('.timeselect').show()
+  $('.clock').addClass('hidden');
+  $('.pauseReset').addClass('hidden');
+  clearInterval(playerOne.interval);
+  clearInterval(playerTwo.interval);
+})
 
 $(window).keypress(function(e) {
   if ((e.keyCode == 32) && (playerOne.active || playerTwo.active)) {

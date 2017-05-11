@@ -8,10 +8,10 @@
     font-style: normal;
 }
 
-html, body {
+/*html, body {
   margin: 0;
   padding: 0;
-}
+}*/
 
 
 .clock {
@@ -20,10 +20,11 @@ html, body {
   align-items:center;
   text-align: center;
   margin: 0;
-  padding:0;
+  padding:2%;
 }
 
 .clockDisplay1, .clockDisplay2{
+  min-height: 100%;
   margin: 0 2.5%;
   flex: 1;
 }
@@ -40,16 +41,19 @@ html, body {
 }
 
 .buttons {
-  flex-grow: 1;
-  max-width: 12%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 
 }
-/*.pause, .restart {
+.pause, .restart {
+  margin: 1% 5%;
   flex: 1;
-}*/
+}
+
+.restart {
+  max-width: 20%;
+  align-self: center;
+}
 
 .timerOne, .timerTwo {
   flex: 1;
@@ -90,6 +94,9 @@ input {
 
 
 @media (max-width: 567px) {
+  .clockDisplay1, .clockDisplay2 {
+    margin: 2% 0;
+  }
   .clock {
     flex-direction: column;
 
@@ -97,9 +104,6 @@ input {
   .innerClock {
     margin: 0;
     font-size: 500px;
-  }
-  .buttons
-    max-width: 100%;
   }
   input {
     text-align: center;
