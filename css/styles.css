@@ -40,17 +40,19 @@ body {
   font-family: 'DS-Digital';
 }
 
-.pause {
+.buttons {
   flex: 1;
-  max-width: 10%;
+  max-width: 12%;
   display: flex;
-  justify-content: center;
-  height: 200px;
-
+  flex-direction: column;
+}
+.pause, .restart {
+  flex: 1;
 }
 
-p {
+.timerOne, .timerTwo, .buttons {
   flex-grow: 1;
+  margin: 0;
 }
 .borderBox {
   border: solid 2px black;
@@ -92,10 +94,8 @@ input {
     margin: 0;
     font-size: 500px;
   }
-  .pause {
-    min-width: 100%;
-    height: 20px;
-    margin: 10px;
+  .buttons {
+    max-width: 100%;
   }
   input {
     text-align: center;

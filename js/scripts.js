@@ -50,7 +50,7 @@ function myTimer(playerClear, playerTimer, timer, stop) {
         }
       }
       if (playerTimer.hours == 0 && playerTimer.minutes == 0 && playerTimer.seconds == 0) {
-        $(timer).html('Time has run out for ' + playerTimer.name);
+        $(timer).html('Time Up ' + playerTimer.name);
         clearInterval(playerClear);
       }
       else {
@@ -143,12 +143,14 @@ $('.more').mousedown(() => {
 });
 
 $('.less').click(() => {
-  console.log('clicked');
-  playTime -= 60;
-  playerTime = playTime/2;
-  console.log(playTime);
-  console.log(playerTime);
-  $('.time').html('Total Game Time: ' + Math.floor(playTime/(Math.pow(60,2))) + ' hours, ' + Math.floor(playTime/60)%60 + ' minutes');
+  if (playerTime > 30) {
+    console.log('clicked');
+    playTime -= 60;
+    playerTime = playTime/2;
+    console.log(playTime);
+    console.log(playerTime);
+    $('.time').html('Total Game Time: ' + Math.floor(playTime/(Math.pow(60,2))) + ' hours, ' + Math.floor(playTime/60)%60 + ' minutes');
+  }
 });
 
 $('.start').click(() => {
@@ -169,15 +171,50 @@ $('.start').click(() => {
     'active':false,
     'paused':false
   }
+  if ($('#pOne').val() != '') {
+      playerOne.name = $('#pOne').val();
+  }
+  if ($('#pTwo').val() != '') {
+      playerOne.name = $('#pTwo').val();
+  }
+
   $('.timerTwo').html(playerTwo.hours + ':' + displayTime(playerTwo.minutes) + ':' + displayTime(playerTwo.seconds));
   $('.timeselect').hide();
-  $('.playerOneName').html($('#pOne').val());
-  $('.playerTwoName').html($('#pTwo').val());
+  $('.playerOneName').html(playerOne.name);
+  $('.playerTwoName').html(playerTwo.name);
   $('.clock').removeClass('hidden');
 
   $(".start1").click()
 
-})
+});
+
+$(window).keypress(function(e) {
+  if ((e.keyCode == 0 || e.keyCode == 32) && (playerOne.active || playerTwo.active)) {
+    console.log(playerOne.active)
+    console.log(playerTwo.active)
+    if (playerOne.active) {
+      if (!playerOne.paused) {
+        playerOne.paused = true;
+        $('.pause').text('Restart Game');
+      }
+      else {
+        playerOne.paused = false;
+        $('.pause').text('Pause game');
+      }
+    }
+    else {
+      if (!playerTwo.paused) {
+        playerTwo.paused = true;
+        $('.pause').text('Restart game');
+      }
+      else {
+        playerTwo.paused = false;
+        $('.pause').text('Pause Game');
+      }
+    }
+    console.log('Space pressed');
+  }
+});
 
 
 
