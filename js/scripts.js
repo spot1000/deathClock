@@ -178,13 +178,15 @@ $('.start').click(() => {
       playerOne.name = $('#pOne').val();
   }
   if ($('#pTwo').val() != '') {
-      playerOne.name = $('#pTwo').val();
+      playerTwo.name = $('#pTwo').val();
   }
+  console.log(playerOne.name);
+  console.log(playerTwo.name);
 
   $('.timerTwo').html(playerTwo.hours + ':' + displayTime(playerTwo.minutes) + ':' + displayTime(playerTwo.seconds));
   $('.timeselect').hide();
-  $('.playerOneName').html(playerOne.name);
-  $('.playerTwoName').html(playerTwo.name);
+  $('.playerOneName').text(playerOne.name);
+  $('.playerTwoName').text(playerTwo.name);
   $('.clock').removeClass('hidden');
   $('.pauseReset').removeClass('hidden');
 
