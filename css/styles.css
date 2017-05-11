@@ -50,9 +50,12 @@
   flex: 1;
 }
 
+.pause {
+  max-width: 75%;
+}
+
 .restart {
   max-width: 20%;
-  align-self: center;
 }
 
 .timerOne, .timerTwo {
@@ -89,6 +92,10 @@ input {
 
 .changeState {
   flex: 1;
+}
+
+h1 {
+  text-align: center;
 }
 
 

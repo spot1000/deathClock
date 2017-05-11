@@ -192,7 +192,7 @@ $('.start').click(() => {
 
 });
 
-$('.restart').click(() => {
+$('.restart').mouseup(() => {
   playTime = 4200
   $('.timeselect').show()
   $('.clock').addClass('hidden');
