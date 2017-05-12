@@ -107,8 +107,6 @@ $('.start2').click(function() {
 });
 
 function pause() {
-  console.log(playerOne.active)
-  console.log(playerTwo.active)
   if (playerOne.active) {
     if (!playerOne.paused) {
       playerOne.paused = true;
@@ -137,21 +135,15 @@ $('.pause').click(function(){
 });
 
 $('.more').mousedown(() => {
-  console.log('clicked');
   playTime += 60;
   playerTime = playTime/2;
-  console.log(playTime);
-  console.log(playerTime);
   $('.time').html('Total Game Time: ' + Math.floor(playTime/(Math.pow(60,2))) + ' hours, ' + Math.floor(playTime/60)%60 + ' minutes');
 });
 
 $('.less').click(() => {
   if (playerTime > 30) {
-    console.log('clicked');
     playTime -= 60;
     playerTime = playTime/2;
-    console.log(playTime);
-    console.log(playerTime);
     $('.time').html('Total Game Time: ' + Math.floor(playTime/(Math.pow(60,2))) + ' hours, ' + Math.floor(playTime/60)%60 + ' minutes');
   }
 });
@@ -180,8 +172,6 @@ $('.start').click(() => {
   if ($('#pTwo').val() != '') {
       playerTwo.name = $('#pTwo').val();
   }
-  console.log(playerOne.name);
-  console.log(playerTwo.name);
 
   $('.timerTwo').html(playerTwo.hours + ':' + displayTime(playerTwo.minutes) + ':' + displayTime(playerTwo.seconds));
   $('.timeselect').hide();
@@ -206,7 +196,6 @@ $('.restart').mouseup(() => {
 $(window).keypress(function(e) {
   if ((e.keyCode == 32) && (playerOne.active || playerTwo.active)) {
     pause();
-    console.log('Space pressed');
   }
 });
 
